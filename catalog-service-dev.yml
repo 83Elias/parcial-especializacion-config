@@ -14,7 +14,7 @@ spring:
     virtual-host: /
   mq:
     queue:
-       name: catalogConsumerQueue
+       name: catalog
        consumer-serie: serieSender
        consumer-movie: movieSendermovieSender
     exchange: 'catalog_event_exchange'
