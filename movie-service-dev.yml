@@ -21,6 +21,11 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+  mq:
+    queue:
+       name: movieSender
+    exchange: 'movie_event_exchange'
+    key-routing: "movie_event_key_routing"
 
 eureka:
   client:
