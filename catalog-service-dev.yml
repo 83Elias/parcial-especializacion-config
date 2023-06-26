@@ -15,8 +15,8 @@ spring:
   mq:
     queue:
        name: catalog
-       consumer-serie: serieSender
-       consumer-movie: movieSender
+       consumerSerie: serieSender
+       consumerMovie: movieSender
     exchange: 'catalog_event_exchange'
     key-routing: "catalog_event_key_routing"
 
