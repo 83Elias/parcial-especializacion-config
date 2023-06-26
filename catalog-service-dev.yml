@@ -12,6 +12,12 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+  mq:
+    queue:
+       consumer-serie: serieSender
+       consumer-movie: movieSendermovieSender
+    exchange: 'catalog_event_exchange'
+    key-routing: "catalog_event_key_routing"
 
 eureka:
   client:
