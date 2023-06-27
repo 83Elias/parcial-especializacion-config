@@ -24,8 +24,40 @@ spring:
       version: 4.0.2
   data:
     mongodb:
-      database: test
+      database: backup
       port: 27017
+  resilience4j:
+    circuitbreaker:
+      instances:
+        movie:
+          register-health-indicator: true
+          sliding-window-type: COUNT_BASED
+          sliding-window-size: 10
+          minimum-number-of-calls: 5
+          permitted-number-of-calls-in-half-open-state: 3
+          wait-duration-in-open-state: 5s
+          failure-rate-threshold: 50
+          automatic-transition-from-open-to-half-open-enabled: true
+        serie:
+          register-health-indicator: true
+          sliding-window-type: COUNT_BASED
+          sliding-window-size: 10
+          minimum-number-of-calls: 5
+          permitted-number-of-calls-in-half-open-state: 3
+          wait-duration-in-open-state: 5s
+          failure-rate-threshold: 50
+          automatic-transition-from-open-to-half-open-enabled: true
+
+    retry:
+      instances:
+        moviesRetry:
+          max-retries: 3
+          wait-duration: 500ms
+          retry-exception-predicate: io.github.resilience4j.circuitbreaker.CallNotPermittedException
+        seriesRetry:
+          max-retries: 3
+          wait-duration: 500ms
+          retry-exception-predicate: io.github.resilience4j.circuitbreaker.CallNotPermittedException
 
 eureka:
   client:
