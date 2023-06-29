@@ -24,7 +24,7 @@ spring:
       version: 4.0.2
   data:
     mongodb:
-      database: backup
+      database: test
       port: 27017
   resilience4j:
     circuitbreaker:
